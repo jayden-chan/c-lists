@@ -8,10 +8,11 @@
 int reallocations = 0;
 
 Vector vector_create(size_t cap) {
+        Vector v;
+        v.len = 0;
+        v.cap = cap;
+
         if (cap == 0) {
-                Vector v;
-                v.len = 0;
-                v.cap = 0;
                 v.data = NULL;
                 return v;
         } else {
@@ -22,9 +23,6 @@ Vector vector_create(size_t cap) {
 #endif
                         panic("Failed to allocate memory for vector");
                 }
-                Vector v;
-                v.len = 0;
-                v.cap = cap;
                 v.data = data;
                 return v;
         }

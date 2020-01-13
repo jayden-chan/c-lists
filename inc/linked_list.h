@@ -11,20 +11,20 @@
 
 typedef struct LinkedList {
         size_t len;
-        struct Node *head;
-        struct Node *tail;
+        struct LLNode *head;
+        struct LLNode *tail;
 } LinkedList;
 
-typedef struct Node {
+typedef struct LLNode {
         int value;
-        struct Node *next;
-        struct Node *prev;
-} Node;
+        struct LLNode *next;
+        struct LLNode *prev;
+} LLNode;
 
-LinkedList list_create();
-void list_push(LinkedList *list, int value);
-void list_print(LinkedList *list);
-int  list_get(LinkedList *list, size_t idx);
-void  list_free(LinkedList *list);
+LinkedList ll_create();
+void ll_push(LinkedList *list, int value);
+void ll_print(LinkedList *list);
+int  ll_get(LinkedList *list, size_t idx);
+void  ll_free(LinkedList *list);
 
 #endif // LINKED_LIST_H

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "linked_list.h"
 
-LinkedList list_create() {
+LinkedList ll_create() {
         LinkedList l;
         l.len = 0;
         l.head = NULL;
@@ -10,16 +10,16 @@ LinkedList list_create() {
         return l;
 }
 
-void list_push(LinkedList *list, int value) {
+void ll_push(LinkedList *list, int value) {
         if (list->head == NULL) {
-                Node *new_node = malloc(sizeof(struct Node));
+                LLNode *new_node = malloc(sizeof(struct LLNode));
                 new_node->value = value;
                 new_node->next = NULL;
                 new_node->prev = NULL;
                 list->head = new_node;
                 list->tail = new_node;
         } else {
-                Node *new_node = malloc(sizeof(struct Node));
+                LLNode *new_node = malloc(sizeof(struct LLNode));
                 new_node->value = value;
                 new_node->next = NULL;
                 new_node->prev = list->tail;
@@ -30,8 +30,8 @@ void list_push(LinkedList *list, int value) {
         list->len += 1;
 }
 
-void list_print(LinkedList *list) {
-        Node *curr = list->head;
+void ll_print(LinkedList *list) {
+        LLNode *curr = list->head;
 
         printf("[");
         while (curr->next != NULL) {
@@ -41,12 +41,12 @@ void list_print(LinkedList *list) {
         printf("%d]\n", curr->value);
 }
 
-int list_get(LinkedList *list, size_t idx) {
+int ll_get(LinkedList *list, size_t idx) {
         if (list->len <= idx) {
                 return -1;
         }
 
-        Node *curr = list->head;
+        LLNode *curr = list->head;
 
         int i = 0;
         while (i < idx) {
@@ -57,11 +57,11 @@ int list_get(LinkedList *list, size_t idx) {
         return curr->value;
 }
 
-void list_free(LinkedList *list) {
-        Node *curr = list->head;
+void ll_free(LinkedList *list) {
+        LLNode *curr = list->head;
 
         while (curr != NULL) {
-                Node *prev = curr;
+                LLNode *prev = curr;
                 curr = curr->next;
                 free(prev);
         }
